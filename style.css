@@ -7,18 +7,18 @@
 
 html, body {
     width: 100%;
-    height: 100%; /* Garante que a tela ocupe 100% do espaço visível */
+    height: 100%;
     font-family: 'Merriweather', Georgia, serif;
     background-color: #ffffff;
-    overflow: hidden; /* Remove barras de rolagem para isolar o layout na tela */
+    overflow: hidden; /* Mantém a tela totalmente travada sem rolagens */
 }
 
 /* CONTAINER DA IMAGEM DE FUNDO (TELA CHEIA) */
 .hero-section {
     position: relative;
     width: 100%;
-    height: calc(100% - 80px); /* Ocupa a tela inteira menos a altura da faixa marrom */
-    background: url('fundo.png') no-repeat center center/cover; /* Imagem correta aplicada */
+    height: calc(100% - 80px); /* Ocupa tudo, exceto os 80px da faixa de baixo */
+    background: url('fundo.png') no-repeat center center/cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,14 +26,14 @@ html, body {
     padding: 20px;
 }
 
-/* Película escura transparente */
+/* Película protetora para o texto */
 .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
@@ -50,7 +50,7 @@ html, body {
     font-weight: 700;
     margin-bottom: 20px;
     letter-spacing: 1px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
 .hero-content p {
@@ -58,43 +58,26 @@ html, body {
     color: #f5f5f5;
     line-height: 1.6;
     margin-bottom: 35px;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 }
 
-/* BOTÃO VERDE (SAIBA MAIS!) */
+/* BOTÃO VERDE REDIRECIONADOR (SAIBA MAIS!) */
 .btn-saiba-mais {
     display: inline-block;
-    background-color: #2d4a3e; /* Verde escuro do Canva */
+    background-color: #2d4a3e;
     color: #ffffff;
     text-decoration: none;
     font-size: 1.1rem;
     font-weight: bold;
     padding: 14px 45px;
     border-radius: 4px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    transition: background 0.3s;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    transition: background 0.2s, transform 0.2s;
 }
 
 .btn-saiba-mais:hover {
     background-color: #1e332a;
-}
-
-/* POSICIONAMENTO DO HOMEM E DO TRATOR COINCIDINDO NA BASE */
-.elemento-recortado {
-    position: absolute;
-    bottom: 35px; /* Senta perfeitamente sobre o topo do mato/grama */
-    height: 220px; /* Altura ideal das figuras */
-    width: auto;
-    z-index: 3;
-    filter: drop-shadow(0px 5px 8px rgba(0, 0, 0, 0.35));
-}
-
-.elemento-recortado.homem {
-    left: 6%;
-}
-
-.elemento-recortado.trator {
-    right: 6%;
+    transform: scale(1.02);
 }
 
 /* GRAMA DE ACABAMENTO COMPACTA NA BASE */
@@ -103,27 +86,26 @@ html, body {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 55px;
+    height: 45px;
     object-fit: cover;
-    z-index: 4; /* Fica acima dos pés do homem e rodas do trator */
+    z-index: 3;
 }
 
 /* FAIXA MARROM INFERIOR */
 .faixa-inferior {
     position: relative;
-    z-index: 5;
+    z-index: 4;
     width: 100%;
-    height: 80px; /* Altura exata da barrinha */
-    background-color: #be9253; /* Tom exato do Canva */
+    height: 80px;
+    background-color: #be9253;
     display: flex;
     align-items: center;
     padding: 0 50px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .faixa-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Centraliza o texto do agronegócio na faixa */
     align-items: center;
     max-width: 1200px;
     width: 100%;
@@ -136,29 +118,11 @@ html, body {
     font-weight: 700;
 }
 
-/* BOTÃO PRÓXIMO (DIRECIONADOR DE PÁGINA) */
-.btn-proximo {
-    display: inline-block;
-    background-color: #515d4f; /* Cinza oliva do Canva */
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: bold;
-    padding: 10px 35px;
-    border-radius: 4px;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
-    transition: background 0.2s;
-}
-
-.btn-proximo:hover {
-    background-color: #3d473b;
-}
-
-/* RESPONSIVIDADE PARA CELULAR */
+/* RESPONSIVIDADE PARA TELAS MENORES */
 @media (max-width: 768px) {
-    .hero-section { height: calc(100% - 120px); padding-bottom: 140px; }
+    .hero-section { height: calc(100% - 100px); }
     .hero-content h1 { font-size: 1.8rem; }
-    .elemento-recortado { height: 130px; bottom: 25px; }
-    .faixa-inferior { height: 120px; padding: 15px; }
-    .faixa-container { flex-direction: column; gap: 10px; }
+    .hero-content p { font-size: 1rem; }
+    .faixa-inferior { height: 100px; padding: 15px; }
+    .titulo-faixa { font-size: 1.4rem; text-align: center; }
 }
