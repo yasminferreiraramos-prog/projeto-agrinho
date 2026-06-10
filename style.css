@@ -1,164 +1,288 @@
-/* 4. SEÇÃO DO RODAPÉ: Organiza o homem, o trator e a nova grama */
-.rodape-layout {
-    position: relative;
-    width: 100%;
-    height: 250px; /* Mantém o espaço para o trator e o homem */
-    display: flex;
-    align-items: flex-end;
+/* ==========================================
+   1. RESET E CONFIGURAÇÕES GERAIS
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* NOVA CAMADA DA GRAMA: Ela repete de ponta a ponta horizontalmente */
-.rodape-layout::before {
-    content: "";
+body {
+    font-family: 'Merriweather', Georgia, serif;
+    background-color: #ffffff;
+    overflow-x: hidden; /* Bloqueia barras de rolagem horizontais indesejadas */
+}
+
+/* ==========================================
+   2. SEÇÃO DO CENÁRIO (HERO SECTION)
+   ========================================== */
+.hero-section {
+    position: relative; /* Torna essa seção a referência de posicionamento para o trator/homem */
+    width: 100%;
+    min-height: 75vh; /* Ocupa 75% da altura da tela */
+    background: url('foto-milho.jpg') no-repeat center center/cover; /* Imagem do milharal como fundo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px 140px 20px; /* Padding maior abaixo para o texto não sobrepor o trator */
+}
+
+/* Película escura transparente sobre a foto de fundo para destacar os textos brancos */
+.hero-overlay {
     position: absolute;
-    bottom: 50px; /* Alinhada logo acima da faixa amarela */
+    top: 0;
     left: 0;
     width: 100%;
-    height: 60px; /* Ajuste a altura dependendo do tamanho da sua imagem */
-    background: url('grama.png') repeat-x bottom center; /* repeat-x faz ela repetir de ponta a ponta */
-    background-size: contain;
-    z-index: 2; /* Fica acima do fundo, mas abaixo do homem e do trator */
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    z-index: 1;
 }
 
-/* IMAGEM DO HOMEM (Mudamos para uma tag interna ou elemento dinâmico para não chocar com a grama) */
-/* Para manter o homem e o trator aparecendo por cima da grama, vamos usar seletores específicos */
-.rodape-layout .faixa-inferior::before {
-    content: "";
-    position: absolute;
-    bottom: 50px; /* Ajustado para fincar os pés na grama */
-    left: 8%;
-    width: 110px;
-    height: 170px;
-    background: url('homem.png') no-repeat center center/contain;
-    z-index: 3; /* Z-index maior para ficar na frente da grama */
-}
-
-.rodape-layout .faixa-inferior::after {
-    content: "";
-    position: absolute;
-    bottom: 45px; /* Ajustado para as rodas ficarem sobre a grama */
-    right: 12%;
-    width: 250px;
-    height: 150px;
-    background: url('trator.png') no-repeat center center/contain;
-    z-index: 3; /* Z-index maior para ficar na frente da grama */
-}
-
-/* 5. FAIXA INFERIOR (Ajustada com a posição correta) */
-.faixa-inferior {
-    width: 100%;
-    background-color: #d2ab6c;
-    padding: 20px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 4; /* Garante que os textos da barra fiquem visíveis na frente de tudo */
+/* ==========================================
+   3. BLOCO DE CONTEÚDO CENTRALIZADO
+   ========================================== */
+.hero-content {
     position: relative;
-}
-/* ==================== ESTILOS DA PÁGINA 2 ==================== */
-
-.container-pagina2 {
-    width: 100%;
-    min-height: 100vh;
-    background-color: #d2ab6c; /* Fundo mostarda/terracota do Canva */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 40px 40px 0 40px;
+    z-index: 2; /* Fica acima da película escura */
+    max-width: 850px;
 }
 
-.topo-pagina2 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 30px;
-}
-
-.titulo-campo {
+.hero-content h1 {
+    font-size: 2.6rem;
     color: #ffffff;
-    font-size: 2.8rem;
-    font-family: 'Georgia', serif; /* Fonte mais elegante igual ao Canva */
-    max-width: 50%;
-    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
 }
 
-.btn-proximo-pg2 {
-    background-color: #4a5247;
+.hero-content p {
+    font-size: 1.2rem;
+    color: #f5f5f5;
+    line-height: 1.6;
+    margin-bottom: 35px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* BOTÃO "SAIBA MAIS!" (VERDE ESCURO) */
+.btn-saiba-mais {
+    display: inline-block;
+    background-color: #2d4a3e; /* Tom verde escuro profundo do seu design */
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 14px 45px;
+    border-radius: 4px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-saiba-mais:hover {
+    background-color: #1e332a;
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   4. POSICIONAMENTO DO HOMEM E DO TRATOR
+   ========================================== */
+.imagem-alinhada {
+    position: absolute; /* Desconecta as fotos do fluxo comum do texto */
+    bottom: -20px; /* Desloca a base das figuras um pouco para dentro da faixa marrom */
+    height: 190px; /* Controla a altura proporcional ideal das imagens */
+    width: auto; /* Mantém a largura correta sem distorcer as imagens */
+    z-index: 3; /* Coloca elas à frente do plano de fundo */
+    filter: drop-shadow(0px 5px 8px rgba(0, 0, 0, 0.35)); /* Cria uma sombra suave ao redor do recorte */
+}
+
+/* Encaixa o trabalhador à esquerda */
+.imagem-alinhada.homem {
+    left: 8%;
+}
+
+/* Encaixa o trator à direita */
+.imagem-alinhada.trator {
+    right: 8%;
+}
+
+/* ==========================================
+   5. FAIXA TERRA INFERIOR (MARROM BEGE)
+   ========================================== */
+.faixa-inferior {
+    position: relative;
+    z-index: 2; /* Fica visualmente sob as rodas do trator e os pés do homem */
+    width: 100%;
+    background-color: #be9253; /* Cor marrom terra sólida correspondente ao Canva */
+    padding: 30px 50px;
+    border-top: 1px solid #aa8044;
+}
+
+.faixa-container {
+    display: flex;
+    justify-content: space-between; /* Texto vai para a esquerda, botão vai para a direita */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.titulo-faixa {
+    font-size: 1.8rem;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* BOTÃO "PRÓXIMO" (CINZA OLIVA) */
+.btn-proximo {
+    background-color: #515d4f; /* Cor cinza oliva idêntica ao Canva */
     color: #ffffff;
     border: none;
-    padding: 12px 40px;
-    font-size: 1.1rem;
     cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 12px 35px;
     border-radius: 4px;
-    transition: background-color 0.2s;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+    transition: background 0.2s;
 }
 
-.btn-proximo-pg2:hover {
-    background-color: #333931;
+.btn-proximo:hover {
+    background-color: #3d473b;
 }
 
-/* Área de conteúdo dividido ao meio */
-.conteudo-principal-pg2 {
+/* ==========================================
+   6. RESPONSIVIDADE (TELA DE CELULARES)
+   ========================================== */
+@media (max-width: 768px) {
+    .hero-section {
+        padding-bottom: 240px; /* Abre espaço vertical no mobile para as fotos */
+    }
+    .hero-content h1 {
+        font-size: 1.9rem;
+    }
+    .faixa-container {
+        flex-direction: column; /* No celular, empilha o texto acima do botão */
+        gap: 20px;
+        text-align: center;
+    }
+    .imagem-alinhada {
+        height: 120px; /* Reduz o tamanho das figuras nas telas pequenas */
+        bottom: -15px;
+    }
+    .imagem-alinhada.homem {
+        left: 4%;
+    }
+    .imagem-alinhada.trator {
+        right: 4%;
+    }
+}
+/* ==========================================
+   7. SEÇÃO INFORMAÇÕES (SEGUNDA PARTE DO SITE)
+   ========================================== */
+.secao-info {
+    width: 100%;
+    background-color: #be9253; /* Cor marrom terra do fundo no Canva */
+    padding: 60px 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.info-container {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    gap: 40px; /* Espaço entre a coluna de texto e as fotos */
+    align-items: center;
+}
+
+/* COLUNA DA ESQUERDA - TEXTO */
+.info-esquerda {
+    flex: 1; /* Ocupa metade do espaço disponível */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Alinha o título e o botão lado a lado na mesma linha */
+.topo-esquerda {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 40px;
-    flex-grow: 1;
-    margin-bottom: 40px;
+    margin-bottom: 25px;
 }
 
-.bloco-texto {
-    width: 45%;
-}
-
-.bloco-texto p {
+.subtitulo-campo {
+    font-size: 2.2rem;
     color: #ffffff;
-    font-size: 1.3rem;
+    font-weight: 400; /* Letra com serifa fina igual ao Canva */
+    font-family: 'Merriweather', Georgia, serif;
+    max-width: 60%;
+}
+
+.btn-proximo-interno {
+    background-color: #4b5449; /* Verde-oliva cinzento escuro */
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    padding: 10px 30px;
+    border-radius: 4px;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.15);
+}
+
+.texto-descricao {
+    font-size: 1.15rem;
+    color: #f5f5f5;
     line-height: 1.7;
-    text-align: left;
+    font-family: 'Merriweather', Georgia, serif;
+    text-align: justify;
 }
 
-/* Grid das duas imagens verticais */
-.bloco-imagens {
-    width: 50%;
+/* COLUNA DA DIREITA - CARDS DE IMAGEM */
+.info-direita {
+    flex: 1; /* Ocupa a outra metade do espaço */
     display: flex;
-    gap: 20px;
-    justify-content: flex-end;
+    gap: 20px; /* Distância entre as duas fotos verticais */
+    justify-content: center;
 }
 
+/* Cria a moldura branca ao redor de cada foto */
 .card-foto {
-    width: 200px;
-    height: 320px;
-    border-radius: 12px;
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    padding: 10px; /* Borda branca espessa em volta da foto */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
+    border-radius: 2px;
+    width: 240px; /* Largura fixa para manter o formato de cartão vertical */
+    height: 340px; /* Altura fixa vertical */
+    overflow: hidden;
 }
 
-/* Vincule as fotos novas que você subirá no GitHub aqui */
-.foto-milho {
-.foto-milho {
-    background-image: url('foto-milho.jpg');
+.card-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz as fotos preencherem o card sem distorcer */
 }
 
-.foto-colheita {
-    background-image: url('foto-colheita.jpg');
-}
-
-}
-
-/* Faixa inferior marrom escuro */
-.faixa-caminho {
-    width: calc(100% + 80px); /* Compensa o padding do container */
-    margin-left: -40px;
-    background-color: #5c3b21; /* Marrom escuro */
-    padding: 25px;
-    text-align: center;
-}
-
-.faixa-caminho h2 {
-    color: #ffffff;
-    font-size: 1.8rem;
-    font-family: 'Georgia', serif;
+/* ==========================================
+   8. RESPONSIVIDADE PARA A SEGUNDA PARTE
+   ========================================== */
+@media (max-width: 900px) {
+    .info-container {
+        flex-direction: column; /* Em telas menores, o texto fica em cima das fotos */
+        gap: 40px;
+    }
+    .topo-esquerda {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    .subtitulo-campo {
+        max-width: 100%;
+    }
+    .info-direita {
+        width: 100%;
+    }
+    .card-foto {
+        width: 45%; /* Os cards se adaptam melhor lado a lado no tablet/celular */
+        height: 280px;
+    }
 }

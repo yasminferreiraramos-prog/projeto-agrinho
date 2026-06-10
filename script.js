@@ -1,49 +1,24 @@
-document.addEventListener("DOMContentLoaded", () => {
+// Aguarda todo o conteúdo da página carregar
+document.addEventListener("DOMContentLoaded", function () {
     
-    // 1. ANIMAÇÃO DE MOVIMENTO: Faz o trator entrar andando na tela
-    const rodape = document.querySelector(".rodape-layout");
-    if (rodape) {
-        const estiloAnimacao = document.createElement("style");
-        estiloAnimacao.innerHTML = `
-            @keyframes andarTrator {
-                from { right: -300px; opacity: 0; }
-                to { right: 12%; opacity: 1; }
-            }
-            .rodape-layout .faixa-inferior::after {
-                animation: andarTrator 1.5s ease-out forwards;
-            }
-        `;
-        document.head.appendChild(estiloAnimacao);
-    }
+    // 1. Captura o botão "Próximo" da primeira faixa inferior
+    const botaoProximoPrimeiro = document.getElementById("btnProximo");
+    
+    // 2. Captura a segunda seção do site (onde o texto e os cards estão)
+    const secaoInformacoes = document.querySelector(".secao-info");
 
-    // 2. INTERAÇÃO DOS BOTÕES DA PÁGINA 1
-    const btnSaibaMais = document.querySelector(".btn-saiba-mais");
-    const btnProximo = document.querySelector(".btn-proximo");
-
-    if (btnSaibaMais) {
-        btnSaibaMais.addEventListener("click", (event) => {
-            event.preventDefault();
-            alert("Carregando conteúdos sobre Tecnologia e Sustentabilidade no Campo... 🌱");
-        });
-    }
-
-    if (btnProximo) {
-        btnProximo.addEventListener("click", () => {
-            document.body.style.opacity = "0";
-            document.body.style.transition = "opacity 0.4s";
-            setTimeout(() => {
-                window.location.href = "pagina2.html";
-            }, 400);
-        });
-    }
-
-    // 3. INTERAÇÃO DO BOTÃO DA PÁGINA 2
-    const btnProximoPg2 = document.querySelector(".btn-proximo-pg2");
-    if (btnProximoPg2) {
-        btnProximoPg2.addEventListener("click", () => {
-            alert("Você está avançando para a próxima seção: 'O caminho do alimento: do campo à mesa'! 🌽");
-            // Se você criar uma pagina3.html no futuro, basta descomentar a linha abaixo:
-            // window.location.href = "pagina3.html";
+    // 3. Verifica se ambos os elementos existem na tela para evitar erros
+    if (botaoProximoPrimeiro && secaoInformacoes) {
+        
+        // Adiciona o evento de clique ao botão
+        botaoProximoPrimeiro.addEventListener("click", function () {
+            
+            // Faz o navegador rolar a tela suavemente até o topo da segunda seção
+            secaoInformacoes.scrollIntoView({ 
+                behavior: "smooth", // Efeito de rolagem suave e elegante
+                block: "start"      // Alinha o topo da seção com o topo do navegador
+            });
+            
         });
     }
 });
