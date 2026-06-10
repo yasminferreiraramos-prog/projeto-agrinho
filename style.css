@@ -1,6 +1,3 @@
-/* ==========================================
-   1. RESET E CONFIGURAÇÕES GERAIS
-   ========================================== */
 * {
     margin: 0;
     padding: 0;
@@ -10,25 +7,23 @@
 body {
     font-family: 'Merriweather', Georgia, serif;
     background-color: #ffffff;
-    overflow-x: hidden; /* Bloqueia barras de rolagem horizontais indesejadas */
+    overflow-x: hidden;
 }
 
-/* ==========================================
-   2. SEÇÃO DO CENÁRIO (HERO SECTION)
-   ========================================== */
+/* SEÇÃO DO CENÁRIO PRINCIPAL */
 .hero-section {
-    position: relative; /* Torna essa seção a referência de posicionamento para o trator/homem */
+    position: relative;
     width: 100%;
-    min-height: 75vh; /* Ocupa 75% da altura da tela */
-    background: url('foto-milho.jpg') no-repeat center center/cover; /* Imagem do milharal como fundo */
+    min-height: 80vh;
+    /* CORRIGIDO: Nome exato do seu arquivo com as aspas para aceitar o espaço se necessário */
+    background: url('fundo.jpg') no-repeat center center/cover; 
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 40px 20px 140px 20px; /* Padding maior abaixo para o texto não sobrepor o trator */
+    padding: 40px 20px 140px 20px;
 }
 
-/* Película escura transparente sobre a foto de fundo para destacar os textos brancos */
 .hero-overlay {
     position: absolute;
     top: 0;
@@ -39,12 +34,9 @@ body {
     z-index: 1;
 }
 
-/* ==========================================
-   3. BLOCO DE CONTEÚDO CENTRALIZADO
-   ========================================== */
 .hero-content {
     position: relative;
-    z-index: 2; /* Fica acima da película escura */
+    z-index: 2;
     max-width: 850px;
 }
 
@@ -65,10 +57,9 @@ body {
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* BOTÃO "SAIBA MAIS!" (VERDE ESCURO) */
 .btn-saiba-mais {
     display: inline-block;
-    background-color: #2d4a3e; /* Tom verde escuro profundo do seu design */
+    background-color: #2d4a3e;
     color: #ffffff;
     text-decoration: none;
     font-size: 1.1rem;
@@ -76,51 +67,55 @@ body {
     padding: 14px 45px;
     border-radius: 4px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    transition: background 0.3s, transform 0.2s;
+    transition: background 0.3s;
 }
 
 .btn-saiba-mais:hover {
     background-color: #1e332a;
-    transform: translateY(-2px);
 }
 
-/* ==========================================
-   4. POSICIONAMENTO DO HOMEM E DO TRATOR
-   ========================================== */
-.imagem-alinhada {
-    position: absolute; /* Desconecta as fotos do fluxo comum do texto */
-    bottom: -20px; /* Desloca a base das figuras um pouco para dentro da faixa marrom */
-    height: 190px; /* Controla a altura proporcional ideal das imagens */
-    width: auto; /* Mantém a largura correta sem distorcer as imagens */
-    z-index: 3; /* Coloca elas à frente do plano de fundo */
-    filter: drop-shadow(0px 5px 8px rgba(0, 0, 0, 0.35)); /* Cria uma sombra suave ao redor do recorte */
+/* POSICIONAMENTO DO HOMEM E DO TRATOR */
+.elemento-recortado {
+    position: absolute;
+    bottom: 0px; 
+    height: 200px; /* Ajustado tamanho para dar destaque */
+    width: auto;
+    z-index: 3;
+    filter: drop-shadow(0px 5px 8px rgba(0, 0, 0, 0.35));
 }
 
-/* Encaixa o trabalhador à esquerda */
-.imagem-alinhada.homem {
+.elemento-recortado.homem {
     left: 8%;
 }
 
-/* Encaixa o trator à direita */
-.imagem-alinhada.trator {
+.elemento-recortado.trator {
     right: 8%;
 }
 
-/* ==========================================
-   5. FAIXA TERRA INFERIOR (MARROM BEGE)
-   ========================================== */
+/* IMAGEM DA GRAMA NO FUNDO DA SEÇÃO */
+.imagem-grama-fundo {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    object-fit: cover;
+    z-index: 4; /* Fica acima da base do trator/homem dando acabamento */
+    pointer-events: none;
+}
+
+/* FAIXA MARROM INFERIOR */
 .faixa-inferior {
     position: relative;
-    z-index: 2; /* Fica visualmente sob as rodas do trator e os pés do homem */
+    z-index: 5; /* Garante que fique acima dos cortes */
     width: 100%;
-    background-color: #be9253; /* Cor marrom terra sólida correspondente ao Canva */
+    background-color: #be9253;
     padding: 30px 50px;
-    border-top: 1px solid #aa8044;
 }
 
 .faixa-container {
     display: flex;
-    justify-content: space-between; /* Texto vai para a esquerda, botão vai para a direita */
+    justify-content: space-between;
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
@@ -132,9 +127,8 @@ body {
     font-weight: 700;
 }
 
-/* BOTÃO "PRÓXIMO" (CINZA OLIVA) */
 .btn-proximo {
-    background-color: #515d4f; /* Cor cinza oliva idêntica ao Canva */
+    background-color: #515d4f;
     color: #ffffff;
     border: none;
     cursor: pointer;
@@ -143,45 +137,12 @@ body {
     padding: 12px 35px;
     border-radius: 4px;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
-    transition: background 0.2s;
 }
 
-.btn-proximo:hover {
-    background-color: #3d473b;
-}
-
-/* ==========================================
-   6. RESPONSIVIDADE (TELA DE CELULARES)
-   ========================================== */
-@media (max-width: 768px) {
-    .hero-section {
-        padding-bottom: 240px; /* Abre espaço vertical no mobile para as fotos */
-    }
-    .hero-content h1 {
-        font-size: 1.9rem;
-    }
-    .faixa-container {
-        flex-direction: column; /* No celular, empilha o texto acima do botão */
-        gap: 20px;
-        text-align: center;
-    }
-    .imagem-alinhada {
-        height: 120px; /* Reduz o tamanho das figuras nas telas pequenas */
-        bottom: -15px;
-    }
-    .imagem-alinhada.homem {
-        left: 4%;
-    }
-    .imagem-alinhada.trator {
-        right: 4%;
-    }
-}
-/* ==========================================
-   7. SEÇÃO INFORMAÇÕES (SEGUNDA PARTE DO SITE)
-   ========================================== */
+/* SEÇÃO INFORMAÇÕES (SEGUNDA PARTE) */
 .secao-info {
     width: 100%;
-    background-color: #be9253; /* Cor marrom terra do fundo no Canva */
+    background-color: #be9253;
     padding: 60px 40px;
     display: flex;
     justify-content: center;
@@ -191,18 +152,16 @@ body {
     display: flex;
     max-width: 1200px;
     width: 100%;
-    gap: 40px; /* Espaço entre a coluna de texto e as fotos */
+    gap: 40px;
     align-items: center;
 }
 
-/* COLUNA DA ESQUERDA - TEXTO */
 .info-esquerda {
-    flex: 1; /* Ocupa metade do espaço disponível */
+    flex: 1;
     display: flex;
     flex-direction: column;
 }
 
-/* Alinha o título e o botão lado a lado na mesma linha */
 .topo-esquerda {
     display: flex;
     justify-content: space-between;
@@ -213,151 +172,100 @@ body {
 .subtitulo-campo {
     font-size: 2.2rem;
     color: #ffffff;
-    font-weight: 400; /* Letra com serifa fina igual ao Canva */
     font-family: 'Merriweather', Georgia, serif;
     max-width: 60%;
 }
 
 .btn-proximo-interno {
-    background-color: #4b5449; /* Verde-oliva cinzento escuro */
+    background-color: #4b5449;
     color: #ffffff;
     border: none;
     cursor: pointer;
     font-size: 0.95rem;
     padding: 10px 30px;
     border-radius: 4px;
-    box-shadow: 0px 4px 6px rgba(0,0,0,0.15);
 }
 
 .texto-descricao {
     font-size: 1.15rem;
     color: #f5f5f5;
     line-height: 1.7;
-    font-family: 'Merriweather', Georgia, serif;
     text-align: justify;
 }
 
-/* COLUNA DA DIREITA - CARDS DE IMAGEM */
 .info-direita {
-    flex: 1; /* Ocupa a outra metade do espaço */
+    flex: 1;
     display: flex;
-    gap: 20px; /* Distância entre as duas fotos verticais */
+    gap: 20px;
     justify-content: center;
 }
 
-/* Cria a moldura branca ao redor de cada foto */
 .card-foto {
     background-color: #ffffff;
-    padding: 10px; /* Borda branca espessa em volta da foto */
+    padding: 10px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
-    border-radius: 2px;
-    width: 240px; /* Largura fixa para manter o formato de cartão vertical */
-    height: 340px; /* Altura fixa vertical */
-    overflow: hidden;
+    width: 240px;
+    height: 340px;
 }
 
 .card-foto img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Faz as fotos preencherem o card sem distorcer */
+    object-fit: cover;
 }
 
-/* ==========================================
-   8. RESPONSIVIDADE PARA A SEGUNDA PARTE
-   ========================================== */
-@media (max-width: 900px) {
-    .info-container {
-        flex-direction: column; /* Em telas menores, o texto fica em cima das fotos */
-        gap: 40px;
-    }
-    .topo-esquerda {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-    .subtitulo-campo {
-        max-width: 100%;
-    }
-    .info-direita {
-        width: 100%;
-    }
-    .card-foto {
-        width: 45%; /* Os cards se adaptam melhor lado a lado no tablet/celular */
-        height: 280px;
-    }
-}
-/* ==========================================
-   9. SEÇÃO CAMINHO DO ALIMENTO (TERCEIRA PARTE)
-   ========================================== */
+/* SEÇÃO CAMINHO DO ALIMENTO (TERCEIRA PARTE) */
 .secao-caminho {
     width: 100%;
-    background-color: #be9253; /* Mantém o fundo marrom terra do Canva */
+    background-color: #be9253;
     padding: 60px 40px;
     text-align: center;
-    border-top: 2px dashed rgba(255, 255, 255, 0.2); /* Linha divisória sutil */
+    border-top: 2px dashed rgba(255, 255, 255, 0.2);
 }
 
-/* Título centralizado da seção */
 .titulo-caminho {
     font-size: 2.4rem;
     color: #ffffff;
-    font-family: 'Merriweather', Georgia, serif;
     margin-bottom: 50px;
-    font-weight: 400;
 }
 
-/* Container das 3 colunas */
 .caminho-container {
     display: flex;
     max-width: 1200px;
     margin: 0 auto;
-    gap: 30px; /* Espaço entre as colunas */
-    align-items: stretch; /* Garante que todas as colunas tenham a mesma altura */
+    gap: 30px;
 }
 
-/* Configuração individual de cada coluna */
 .coluna-etapa {
-    flex: 1; /* Divide o espaço igualmente por 3 */
-    background-color: rgba(255, 255, 255, 0.05); /* Fundo levemente diferenciado se desejar, ou mude para transparente */
-    border: 2px solid rgba(255, 255, 255, 0.2); /* Bordas suaves que imitam a seleção do seu Canva */
+    flex: 1;
+    border: 2px solid rgba(255, 255, 255, 0.2);
     padding: 30px 25px;
     border-radius: 4px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
 }
 
-/* Títulos internos de cada etapa */
 .coluna-etapa h3 {
     font-size: 1.4rem;
     color: #ffffff;
-    font-family: 'Merriweather', Georgia, serif;
     margin-bottom: 20px;
-    font-weight: 700;
 }
 
-/* Parágrafos de cada etapa */
 .coluna-etapa p {
     font-size: 1.1rem;
     color: #f5f5f5;
     line-height: 1.6;
-    font-family: 'Merriweather', Georgia, serif;
-    text-align: center;
-    margin-bottom: auto; /* Empurra os ícones/botões sempre para a base */
-    padding-bottom: 20px;
+    margin-bottom: auto;
 }
 
-/* Espaço dos ícones na base */
 .icone-etapa {
-    font-size: 2.5rem; /* Tamanho do emoji/ícone */
+    font-size: 2.5rem;
     margin-top: 20px;
-    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.2));
 }
 
-/* Botão Próximo dentro da terceira coluna */
 .btn-proximo-caminho {
-    background-color: #4b5449; /* Verde oliva escuro */
+    background-color: #4b5449;
     color: #ffffff;
     border: none;
     cursor: pointer;
@@ -366,27 +274,14 @@ body {
     padding: 12px 45px;
     border-radius: 4px;
     margin-top: 20px;
-    box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
-    transition: background 0.2s;
-    width: 80%; /* Deixa o botão larguinho como no layout */
+    width: 80%;
 }
 
-.btn-proximo-caminho:hover {
-    background-color: #3d473b;
-}
-
-/* ==========================================
-   10. RESPONSIVIDADE PARA A TERCEIRA PARTE
-   ========================================== */
 @media (max-width: 850px) {
-    .caminho-container {
-        flex-direction: column; /* Colunas empilham uma embaixo da outra no celular */
-        gap: 40px;
+    .caminho-container, .info-container {
+        flex-direction: column;
     }
-    .titulo-caminho {
-        font-size: 1.8rem;
-    }
-    .btn-proximo-caminho {
-        width: 100%;
+    .elemento-recortado {
+        height: 120px;
     }
 }
