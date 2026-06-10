@@ -55,3 +55,110 @@
     z-index: 4; /* Garante que os textos da barra fiquem visíveis na frente de tudo */
     position: relative;
 }
+/* ==================== ESTILOS DA PÁGINA 2 ==================== */
+
+.container-pagina2 {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #d2ab6c; /* Fundo mostarda/terracota do Canva */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 40px 0 40px;
+}
+
+.topo-pagina2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.titulo-campo {
+    color: #ffffff;
+    font-size: 2.8rem;
+    font-family: 'Georgia', serif; /* Fonte mais elegante igual ao Canva */
+    max-width: 50%;
+    line-height: 1.2;
+}
+
+.btn-proximo-pg2 {
+    background-color: #4a5247;
+    color: #ffffff;
+    border: none;
+    padding: 12px 40px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.btn-proximo-pg2:hover {
+    background-color: #333931;
+}
+
+/* Área de conteúdo dividido ao meio */
+.conteudo-principal-pg2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    flex-grow: 1;
+    margin-bottom: 40px;
+}
+
+.bloco-texto {
+    width: 45%;
+}
+
+.bloco-texto p {
+    color: #ffffff;
+    font-size: 1.3rem;
+    line-height: 1.7;
+    text-align: left;
+}
+
+/* Grid das duas imagens verticais */
+.bloco-imagens {
+    width: 50%;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+}
+
+.card-foto {
+    width: 200px;
+    height: 320px;
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Vincule as fotos novas que você subirá no GitHub aqui */
+.foto-milho {
+.foto-milho {
+    background-image: url('foto-milho.jpg');
+}
+
+.foto-colheita {
+    background-image: url('foto-colheita.jpg');
+}
+
+}
+
+/* Faixa inferior marrom escuro */
+.faixa-caminho {
+    width: calc(100% + 80px); /* Compensa o padding do container */
+    margin-left: -40px;
+    background-color: #5c3b21; /* Marrom escuro */
+    padding: 25px;
+    text-align: center;
+}
+
+.faixa-caminho h2 {
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-family: 'Georgia', serif;
+}

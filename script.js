@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+    
     // 1. ANIMAÇÃO DE MOVIMENTO: Faz o trator entrar andando na tela
     const rodape = document.querySelector(".rodape-layout");
-
     if (rodape) {
-        // Cria um estilo dinâmico para fazer o trator deslizar da direita para a esquerda
         const estiloAnimacao = document.createElement("style");
         estiloAnimacao.innerHTML = `
             @keyframes andarTrator {
@@ -17,11 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
         document.head.appendChild(estiloAnimacao);
     }
 
-    // 2. INTERAÇÃO DOS BOTÕES
+    // 2. INTERAÇÃO DOS BOTÕES DA PÁGINA 1
     const btnSaibaMais = document.querySelector(".btn-saiba-mais");
     const btnProximo = document.querySelector(".btn-proximo");
 
-    // Ação ao clicar em "SAIBA MAIS!"
     if (btnSaibaMais) {
         btnSaibaMais.addEventListener("click", (event) => {
             event.preventDefault();
@@ -29,16 +27,23 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Ação ao clicar em "Próximo"
     if (btnProximo) {
         btnProximo.addEventListener("click", () => {
-            document.body.style.opacity = "0.5";
+            document.body.style.opacity = "0";
             document.body.style.transition = "opacity 0.4s";
-
             setTimeout(() => {
-                alert("Avançando para a próxima etapa do projeto Agrinho 2026! 🚜");
-                document.body.style.opacity = "1";
+                window.location.href = "pagina2.html";
             }, 400);
+        });
+    }
+
+    // 3. INTERAÇÃO DO BOTÃO DA PÁGINA 2
+    const btnProximoPg2 = document.querySelector(".btn-proximo-pg2");
+    if (btnProximoPg2) {
+        btnProximoPg2.addEventListener("click", () => {
+            alert("Você está avançando para a próxima seção: 'O caminho do alimento: do campo à mesa'! 🌽");
+            // Se você criar uma pagina3.html no futuro, basta descomentar a linha abaixo:
+            // window.location.href = "pagina3.html";
         });
     }
 });
