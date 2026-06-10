@@ -1,3 +1,4 @@
+/* RESET DE ESTILOS */
 * {
     margin: 0;
     padding: 0;
@@ -10,18 +11,19 @@ body {
     overflow-x: hidden;
 }
 
-/* SEÇÃO DO CENÁRIO PRINCIPAL */
+/* ==========================================
+   PRIMEIRA SEÇÃO
+   ========================================== */
 .hero-section {
     position: relative;
     width: 100%;
-    min-height: 80vh;
-    /* CORRIGIDO: Nome exato do seu arquivo com as aspas para aceitar o espaço se necessário */
+    height: 85vh; /* Ocupa altura fixa confortável da tela */
     background: url('fundo.jpg') no-repeat center center/cover; 
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 40px 20px 140px 20px;
+    padding-bottom: 100px;
 }
 
 .hero-overlay {
@@ -37,23 +39,22 @@ body {
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 850px;
+    max-width: 800px;
 }
 
 .hero-content h1 {
-    font-size: 2.6rem;
+    font-size: 2.5rem;
     color: #ffffff;
     font-weight: 700;
     margin-bottom: 20px;
-    letter-spacing: 1px;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .hero-content p {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     color: #f5f5f5;
     line-height: 1.6;
-    margin-bottom: 35px;
+    margin-bottom: 30px;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -64,53 +65,47 @@ body {
     text-decoration: none;
     font-size: 1.1rem;
     font-weight: bold;
-    padding: 14px 45px;
+    padding: 12px 40px;
     border-radius: 4px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    transition: background 0.3s;
 }
 
-.btn-saiba-mais:hover {
-    background-color: #1e332a;
-}
-
-/* POSICIONAMENTO DO HOMEM E DO TRATOR */
+/* POSICIONAMENTO REALISTA DAS FOTOS RECORTADAS */
 .elemento-recortado {
     position: absolute;
-    bottom: 0px; 
-    height: 200px; /* Ajustado tamanho para dar destaque */
+    bottom: 30px; /* Sobe um pouco para ficar em cima da grama */
+    height: 220px; /* Tamanho controlado */
     width: auto;
     z-index: 3;
     filter: drop-shadow(0px 5px 8px rgba(0, 0, 0, 0.35));
 }
 
 .elemento-recortado.homem {
-    left: 8%;
+    left: 5%;
 }
 
 .elemento-recortado.trator {
-    right: 8%;
+    right: 5%;
 }
 
-/* IMAGEM DA GRAMA NO FUNDO DA SEÇÃO */
+/* GRAMA DE ACABAMENTO */
 .imagem-grama-fundo {
     position: absolute;
-    bottom: -5px;
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 60px;
+    height: 50px;
     object-fit: cover;
-    z-index: 4; /* Fica acima da base do trator/homem dando acabamento */
-    pointer-events: none;
+    z-index: 4; /* Fica por cima da base do trator/homem */
 }
 
-/* FAIXA MARROM INFERIOR */
+/* BARRINHA MARROM INFERIOR */
 .faixa-inferior {
     position: relative;
-    z-index: 5; /* Garante que fique acima dos cortes */
+    z-index: 5;
     width: 100%;
     background-color: #be9253;
-    padding: 30px 50px;
+    padding: 25px 50px;
 }
 
 .faixa-container {
@@ -124,26 +119,25 @@ body {
 .titulo-faixa {
     font-size: 1.8rem;
     color: #ffffff;
-    font-weight: 700;
 }
 
 .btn-proximo {
     background-color: #515d4f;
     color: #ffffff;
     border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    padding: 12px 35px;
+    padding: 10px 30px;
     border-radius: 4px;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+    font-weight: bold;
+    cursor: pointer;
 }
 
-/* SEÇÃO INFORMAÇÕES (SEGUNDA PARTE) */
+/* ==========================================
+   SEGUNDA SEÇÃO (CONTEÚDO DO CANVA)
+   ========================================== */
 .secao-info {
     width: 100%;
     background-color: #be9253;
-    padding: 60px 40px;
+    padding: 80px 40px;
     display: flex;
     justify-content: center;
 }
@@ -152,14 +146,12 @@ body {
     display: flex;
     max-width: 1200px;
     width: 100%;
-    gap: 40px;
+    gap: 50px;
     align-items: center;
 }
 
 .info-esquerda {
     flex: 1;
-    display: flex;
-    flex-direction: column;
 }
 
 .topo-esquerda {
@@ -172,27 +164,25 @@ body {
 .subtitulo-campo {
     font-size: 2.2rem;
     color: #ffffff;
-    font-family: 'Merriweather', Georgia, serif;
-    max-width: 60%;
+    font-weight: 400;
 }
 
 .btn-proximo-interno {
     background-color: #4b5449;
     color: #ffffff;
     border: none;
-    cursor: pointer;
-    font-size: 0.95rem;
     padding: 10px 30px;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 .texto-descricao {
     font-size: 1.15rem;
     color: #f5f5f5;
     line-height: 1.7;
-    text-align: justify;
 }
 
+/* RESOLVIDO O BUG: Os cartões mantêm as fotos presas na caixinha */
 .info-direita {
     flex: 1;
     display: flex;
@@ -202,25 +192,27 @@ body {
 
 .card-foto {
     background-color: #ffffff;
-    padding: 10px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
-    width: 240px;
-    height: 340px;
+    padding: 12px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    width: 230px;
+    height: 330px;
 }
 
 .card-foto img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Recorta a imagem para caber sem esmagar */
 }
 
-/* SEÇÃO CAMINHO DO ALIMENTO (TERCEIRA PARTE) */
+/* ==========================================
+   TERCEIRA SEÇÃO
+   ========================================== */
 .secao-caminho {
     width: 100%;
     background-color: #be9253;
-    padding: 60px 40px;
+    padding: 80px 40px;
     text-align: center;
-    border-top: 2px dashed rgba(255, 255, 255, 0.2);
+    border-top: 2px dashed rgba(255, 255, 255, 0.15);
 }
 
 .titulo-caminho {
@@ -247,13 +239,13 @@ body {
 }
 
 .coluna-etapa h3 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: #ffffff;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .coluna-etapa p {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: #f5f5f5;
     line-height: 1.6;
     margin-bottom: auto;
@@ -268,20 +260,19 @@ body {
     background-color: #4b5449;
     color: #ffffff;
     border: none;
-    cursor: pointer;
-    font-size: 0.95rem;
-    font-weight: bold;
     padding: 12px 45px;
     border-radius: 4px;
     margin-top: 20px;
     width: 80%;
+    cursor: pointer;
 }
 
+/* RESPONSIVIDADE */
 @media (max-width: 850px) {
     .caminho-container, .info-container {
         flex-direction: column;
     }
-    .elemento-recortado {
-        height: 120px;
-    }
+    .hero-section { height: auto; padding-top: 60px; padding-bottom: 180px; }
+    .elemento-recortado { height: 130px; }
+    .card-foto { width: 45%; height: 260px; }
 }
