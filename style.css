@@ -286,3 +286,107 @@ body {
         height: 280px;
     }
 }
+/* ==========================================
+   9. SEÇÃO CAMINHO DO ALIMENTO (TERCEIRA PARTE)
+   ========================================== */
+.secao-caminho {
+    width: 100%;
+    background-color: #be9253; /* Mantém o fundo marrom terra do Canva */
+    padding: 60px 40px;
+    text-align: center;
+    border-top: 2px dashed rgba(255, 255, 255, 0.2); /* Linha divisória sutil */
+}
+
+/* Título centralizado da seção */
+.titulo-caminho {
+    font-size: 2.4rem;
+    color: #ffffff;
+    font-family: 'Merriweather', Georgia, serif;
+    margin-bottom: 50px;
+    font-weight: 400;
+}
+
+/* Container das 3 colunas */
+.caminho-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px; /* Espaço entre as colunas */
+    align-items: stretch; /* Garante que todas as colunas tenham a mesma altura */
+}
+
+/* Configuração individual de cada coluna */
+.coluna-etapa {
+    flex: 1; /* Divide o espaço igualmente por 3 */
+    background-color: rgba(255, 255, 255, 0.05); /* Fundo levemente diferenciado se desejar, ou mude para transparente */
+    border: 2px solid rgba(255, 255, 255, 0.2); /* Bordas suaves que imitam a seleção do seu Canva */
+    padding: 30px 25px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Títulos internos de cada etapa */
+.coluna-etapa h3 {
+    font-size: 1.4rem;
+    color: #ffffff;
+    font-family: 'Merriweather', Georgia, serif;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* Parágrafos de cada etapa */
+.coluna-etapa p {
+    font-size: 1.1rem;
+    color: #f5f5f5;
+    line-height: 1.6;
+    font-family: 'Merriweather', Georgia, serif;
+    text-align: center;
+    margin-bottom: auto; /* Empurra os ícones/botões sempre para a base */
+    padding-bottom: 20px;
+}
+
+/* Espaço dos ícones na base */
+.icone-etapa {
+    font-size: 2.5rem; /* Tamanho do emoji/ícone */
+    margin-top: 20px;
+    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.2));
+}
+
+/* Botão Próximo dentro da terceira coluna */
+.btn-proximo-caminho {
+    background-color: #4b5449; /* Verde oliva escuro */
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: bold;
+    padding: 12px 45px;
+    border-radius: 4px;
+    margin-top: 20px;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+    transition: background 0.2s;
+    width: 80%; /* Deixa o botão larguinho como no layout */
+}
+
+.btn-proximo-caminho:hover {
+    background-color: #3d473b;
+}
+
+/* ==========================================
+   10. RESPONSIVIDADE PARA A TERCEIRA PARTE
+   ========================================== */
+@media (max-width: 850px) {
+    .caminho-container {
+        flex-direction: column; /* Colunas empilham uma embaixo da outra no celular */
+        gap: 40px;
+    }
+    .titulo-caminho {
+        font-size: 1.8rem;
+    }
+    .btn-proximo-caminho {
+        width: 100%;
+    }
+}

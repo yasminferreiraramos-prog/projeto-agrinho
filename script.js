@@ -1,24 +1,22 @@
-// Aguarda todo o conteúdo da página carregar
 document.addEventListener("DOMContentLoaded", function () {
     
-    // 1. Captura o botão "Próximo" da primeira faixa inferior
+    // 1. Primeiro botão "Próximo" (leva para a Segunda Seção)
     const botaoProximoPrimeiro = document.getElementById("btnProximo");
-    
-    // 2. Captura a segunda seção do site (onde o texto e os cards estão)
     const secaoInformacoes = document.querySelector(".secao-info");
 
-    // 3. Verifica se ambos os elementos existem na tela para evitar erros
     if (botaoProximoPrimeiro && secaoInformacoes) {
-        
-        // Adiciona o evento de clique ao botão
         botaoProximoPrimeiro.addEventListener("click", function () {
-            
-            // Faz o navegador rolar a tela suavemente até o topo da segunda seção
-            secaoInformacoes.scrollIntoView({ 
-                behavior: "smooth", // Efeito de rolagem suave e elegante
-                block: "start"      // Alinha o topo da seção com o topo do navegador
-            });
-            
+            secaoInformacoes.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+    }
+
+    // 2. Segundo botão "Próximo" (da Segunda Seção, leva para a Terceira Seção)
+    const botaoProximoInterno = document.querySelector(".btn-proximo-interno");
+    const secaoCaminho = document.querySelector(".secao-caminho");
+
+    if (botaoProximoInterno && secaoCaminho) {
+        botaoProximoInterno.addEventListener("click", function () {
+            secaoCaminho.scrollIntoView({ behavior: "smooth", block: "start" });
         });
     }
 });
